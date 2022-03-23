@@ -46,6 +46,43 @@ public class FripperController : MonoBehaviour
         {
             SetAngle(this.defaultAngle);
         }
+
+        foreach (Touch touch in Input.touches)
+        {
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (isLeftSideOfWindow(touch.position.x) && tag == "LeftFlipperTag")
+                {
+                    SetAngle(this.flickAngle);
+                }
+                if (isRightSideOfWindow(touch.position.x) && tag == "RightFlipperTag")
+                {
+                    SetAngle(this.flickAngle);
+                }
+
+            }
+            if (touch.phase == TouchPhase.Ended)
+            {
+                if (tag == "LeftFlipperTag")
+                {
+                    SetAngle(this.defaultAngle);
+                }
+                if (tag == "RightFlipperTag")
+                {
+                    SetAngle(this.defaultAngle);
+                }
+            }
+        }
+    }
+
+    bool isLeftSideOfWindow(float x)
+    {
+        return x < (Screen.width / 2);
+    }
+
+    bool isRightSideOfWindow(float x)
+    {
+        return x >= (Screen.width / 2);
     }
 
     public void SetAngle(float angle)
