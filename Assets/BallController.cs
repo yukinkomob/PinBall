@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class BallController : MonoBehaviour
 {
     private float visiblePosZ = -6.5f;
-    private GameObject gameoverText;
+    private GameObject gameOverText;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.gameoverText = GameObject.Find("GameOverText");
+        this.gameOverText = GameObject.Find("GameOverText");
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class BallController : MonoBehaviour
     {
         if (this.transform.position.z < this.visiblePosZ)
         {
-            this.gameoverText.GetComponent<Text>().text = "Game Over";
+            this.gameOverText.GetComponent<Text>().text = "Game Over";
         }
     }
 }
